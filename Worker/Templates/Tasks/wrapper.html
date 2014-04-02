@@ -1,0 +1,19 @@
+﻿<div id="wrapper" style="position:relative;" class="fullheight clearfix">
+    <div id="main-content" class="col-sm-12 col-md-4 col-lg-3 fullheight" style="z-index:10;">
+
+        <!--data-ui-view="viewA"-->
+        <div class="go-back-button" ng-click="back()">
+            <i class="fa fa-2x fa-arrow-left"></i>
+            <h1>Tasks</h1>
+        </div>
+        <div ng-repeat="task in tasks">
+            <a class="button tile" ng-href="#/tasks/{{task.Id}}" ng-class="{active: urlIs('/tasks/{{task.Id}}')}">{{ task.Title }}</a>
+        </div>
+
+    </div>
+    <div id="sub-content" class="col-sm-12 col-md-8 col-lg-9" style="z-index: 9;">
+        <div style="overflow:hidden;">
+            <div data-ui-view="viewB" class="animate" style="z-index:3"></div>
+        </div>
+    </div>
+</div>
