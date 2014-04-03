@@ -6,12 +6,10 @@
     @Styles.Render("~/content/bootstrap/base")
     @Styles.Render("~/content/css")
     @Styles.Render("~/content/angular")
-    <link href="~/Content/css/font-awesome.css" rel="stylesheet" />
-    <link href="~/Content/toastr.min.css" rel="stylesheet" />
-
+    @Styles.Render("~/content/toastr")
+    @Styles.Render("~/Content/font-awesome")
 </head>
 <body ng-app="app" data-resizable="">
-  
     <div id="menu" class="fullheight" ng-controller="MenuCtrl">
         <a ng-href="/"><h1>Worker</h1></a>
         <div class="nav">
@@ -31,154 +29,11 @@
     </div>
     <div class="clearfix fullheight" id="main-wrapper" ng-controller="ContentCtrl">
         <div data-ui-view="main" class="animate fullheight"></div>
-
     </div>
     @Scripts.Render("~/bundles/jquery")
-
-    <script src="~/Scripts/toastr.min.js"></script>
-    <script src="~/Scripts/angular.js"></script>
-    <script src="~/Scripts/AngularUI/ui-router.js"></script>
-    <script src="~/Scripts/angular-animate.js"></script>
-    <script src="~/Scripts/angular-route.js"></script>
-    <script src="~/Scripts/angular-resource.js"></script>
-    <script>
-        (function () {
-            var app;
-            app = angular.module('app',
-                ['ngRoute', 'ui.router', 'ngAnimate', 'ngResource']);
-
-            app.directive('resizable', function ($window) {
-                var $itemsWrapper = $("#items-wrapper");
-                var $innerItemsWrapper = $("#inner-items-wrapper");
-                return function ($scope) {
-                    $scope.initializeWindowSize = function () {
-                        $scope.windowHeight = $window.innerHeight;
-                        $scope.windowWidth = $window.innerWidth;
-                        //avoid changing width on scrollbar showing
-                        //   if (!$itemsWrapper.length) {
-                        $itemsWrapper = $("#items-wrapper");
-                        $innerItemsWrapper = $("#inner-items-wrapper");
-                        // }
-                        if ($itemsWrapper.length) {
-                            $itemsWrapper.css('height', ($scope.windowHeight - $itemsWrapper.offset().top) + "px");
-                            if ($itemsWrapper.outerHeight() >= $innerItemsWrapper.height() + 10) {
-                                $itemsWrapper.css("padding-right", "20px");
-                            } else { $itemsWrapper.css("padding-right", "5px"); }
-
-                        }
-                    };
-                    angular.element($window).bind("resize", function () {
-                        $scope.initializeWindowSize();
-                    });
-                    $scope.initializeWindowSize();
-                }
-            });
-            app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
-                $locationProvider.html5Mode(true);
-                $urlRouterProvider.when("", "/tasks");
-                $urlRouterProvider.otherwise("/tasks");
-                $stateProvider
-                    .state('tasks', {
-                        url: "/tasks",
-                        views: {
-                            "main": {
-                                templateUrl: "/Templates/Tasks/wrapper.html",
-                                controller: 'tasksCtrl',
-
-                                resolve: {
-                                    delayedData: function ($q, tasksFactory) {
-                                        // Set up a promise to return
-                                        var deferred = $q.defer();
-                                        // Set up our resource calls
-                                        var tasks = tasksFactory.query();
-                                        // Log out each result so we can see which completed first
-                                        tasks.$promise.then(function (response) { });
-                                        // Wait until both resources have resolved their promises, then resolve this promise
-                                        $q.all([tasks.$promise]).then(function (response) {
-                                            deferred.resolve(response);
-                                        });
-                                        return deferred.promise;
-                                    }
-                                }
-                            }
-                        }
-                    })
-                    .state('tasks.add', {
-                        url: "/add",
-                        views: {
-                            "viewB": {
-                                templateUrl: "/Templates/Tasks/add.html",
-                                controller: function ($scope, $stateParams) {
-                                }
-                            }
-                        }
-                    })
-                    .state('tasks.item', {
-                        url: "/:id",
-                        views: {
-                            "viewB": {
-                                templateUrl: "/Templates/Tasks/item.html",
-                                controller: function ($scope, $stateParams) {
-                                    $scope.task = $scope.tasks[$stateParams.id - 1];
-                                }
-                            }
-                        }
-                    })
-                    .state('projects', {
-                        url: "/projects",
-                        views: {
-                            "main": {
-                                templateUrl: "/Templates/Projects/wrapper.html",
-                                controller: function () {
-                                },
-                            }
-                        }
-                    }).state('projects.item', {
-                        url: "/item:id",
-                        views: {
-
-                        }
-                    });
-                return true;
-            });
-
-            window.MenuCtrl = function ($scope, $location, $route) {
-                window.scope = $scope;
-                $scope.$location = $location;
-                $scope._ = {};
-                $scope.urlIs = function (u) {
-                    return location.hash.indexOf(u) != -1;
-                };
-            };
-
-            window.ContentCtrl = function ($scope, $location, $route) {
-                $scope.back = function () {
-                    history.length > 1 && history.back();
-                };
-                $scope.urlIs = function (u) {
-                    return location.hash.indexOf(u) != -1;
-                };
-            };
-
-            app.controller('tasksCtrl', ['$scope', 'delayedData', '$timeout', function ($scope, delayedData, $timeout) {
-
-                $scope.tasks = delayedData[0];
-                $timeout(function () { $scope.initializeWindowSize() }, 0);// its magic. dont touch it
-            }]);
-
-            app.factory('tasksFactory', ['$http', '$resource', function ($http, $resource) {
-                return $resource('/api/Task');
-            }]);
-
-            app.factory('taskFactory', ['$http', '$resource', function ($http, $resource) {
-                return $resource('/api/Task/:id', { id: '@@id' }, { 'update': { method: 'PUT' } }, { 'query': { method: 'GET', isArray: false } });
-            }]);
-        })();
-    </script>
-
+    @Scripts.Render("~/bundles/toastr")
+    @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/bootstrap")
-
-
 </body>
 
 </html>

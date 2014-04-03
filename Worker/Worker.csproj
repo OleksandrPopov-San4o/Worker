@@ -277,13 +277,8 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\AngularUI\ui-router.js" />
     <Content Include="Scripts\AngularUI\ui-router.min.js" />
+    <Content Include="Scripts\App\app-config.js" />
     <Content Include="Scripts\App\app.js" />
-    <Content Include="Scripts\App\Directives\Content\crud-grid-directive.css" />
-    <Content Include="Scripts\App\Directives\crud-grid-directive.js" />
-    <Content Include="Scripts\App\Directives\model-change-blur-directive.js" />
-    <Content Include="Scripts\App\Directives\Templates\crud-grid-directive-template.html" />
-    <Content Include="Scripts\App\Services\notification-factory.js" />
-    <Content Include="Scripts\App\Directives\Services\crud-grid-data-factory.js" />
     <Content Include="Content\font\fontawesome-webfont.woff">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -300,6 +295,10 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Scripts\App\Controllers\controllers.js" />
+    <Content Include="Scripts\App\Directives\resizable.js" />
+    <Content Include="Scripts\App\Services\tasks-factory.js" />
+    <Content Include="Scripts\App\Services\notification-factory.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\errors.json" />
@@ -624,6 +623,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\App\Directives\Content\" />
+    <Folder Include="Scripts\App\Directives\Services\" />
+    <Folder Include="Scripts\App\Directives\Templates\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

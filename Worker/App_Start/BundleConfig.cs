@@ -11,12 +11,18 @@ namespace Worker
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
-
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
-                        "~/Scripts/angular.js", "~/Scripts/angular-resource.js", 
-                        "~/Scripts/App/app.js", 
+                        "~/Scripts/angular.js", 
+                        "~/Scripts/angular-resource.js", 
+                        "~/Scripts/AngularUI/ui-router.js",
+                        "~/Scripts/angular-animate.js",
+                        "~/Scripts/angular-route.js",
+                        "~/Scripts/App/app.js",
+                        "~/Scripts/App/app-config.js",
+                        "~/Scripts/App/Controllers/*.js", 
                         "~/Scripts/App/Services/*.js", 
-                        "~/Scripts/App/Directives/*.js", "~/Scripts/App/Directives/Services/*.js"));
+                        "~/Scripts/App/Directives/*.js",
+                        "~/Scripts/App/Directives/Services/*.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/toastr").Include(
                         "~/Scripts/toastr.js"));
@@ -34,12 +40,12 @@ namespace Worker
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
-            
+
+            bundles.Add(new StyleBundle("~/Content/font-awesome").Include("~/Content/css/font-awesome.min.css"));
+
             bundles.Add(new StyleBundle("~/Content/angular").Include("~/Scripts/App/Directives/Content/*.css"));
 
-
             bundles.Add(new StyleBundle("~/Content/toastr").Include("~/Content/toastr.css"));
-
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
