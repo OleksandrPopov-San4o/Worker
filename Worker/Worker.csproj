@@ -596,6 +596,7 @@
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Templates\Tasks\add.html" />
     <Content Include="Templates\Tasks\wrapper.html" />
     <Content Include="Templates\Projects\wrapper.html" />
     <Content Include="Web.config">

@@ -7,240 +7,24 @@
     @Styles.Render("~/content/css")
     @Styles.Render("~/content/angular")
     <link href="~/Content/css/font-awesome.css" rel="stylesheet" />
- 
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
 
 </head>
-<body ng-app="app">
-    <style>
-        html, body, .fullheight {
-            height: 100%;
-            min-height: 100% !important;
-        }
-
-        body {
-            background: #f0f0f0;
-        }
-
-        .go-back-button {
-            color: #aaa;
-            font-family: "Roboto", "PT Sans", sans-serif;
-            font-weight: 300;
-          
-            -webkit-transition: all 0.5s;
-            -moz-transition: all 0.5s;
-            -o-transition: all 0.5s;
-            transition: all 0.5s;
-            cursor:pointer;
-            padding-bottom:15px;
-        }
-
-            .go-back-button:hover {
-                color: #777;
-            }
-
-            .go-back-button h1 {
-                margin-left:20px;
-                display: inline;
-            }
-
-
-
-
-        #menu {
-            background: #333;
-            -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-            -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-            -ms-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-            -o-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-            box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-            border-right: 1px solid black;
-            padding: 0;
-            width: 240px;
-            float: left;
-        }
-            #menu h1 {
-                color: #aaa;
-             
-                font-family: "Roboto", "PT Sans", sans-serif;
-                font-weight: 300;
-                
-               
-                padding: 5px 20px 10px 20px;
-                margin: 0;
-            }
-                #menu a {
-                    text-decoration: none;
-                }
-        #main-wrapper {
-            overflow: hidden;
-            position: relative;
-        }
-
-        #main-content {
-            -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-            -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-            -ms-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-            -o-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-            box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-            background: white;
-            border-right: 1px solid #ddd;
-            padding: 20px;
-        }
-
-
-        #sub-content {
-            position: relative;
-            padding: 0;
-        }
-
-        .viewB {
-            padding: 20px;
-            background: white;
-            border-bottom: 3px solid #ffab00;
-        }
-
-        #menu {
-            padding-top: 20px;
-            padding-bottom: 20px;
-        }
-
-
-        .nav a {
-            -webkit-transition: all 0.25s;
-            -moz-transition: all 0.25s;
-            -o-transition: all 0.25s;
-            transition: all 0.25s;
-            display: block;
-            padding: 10px 20px;
-            color: #aaa;
-            text-shadow: 0 1px 0px rgba(0, 0, 0, 0.25);
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-            .nav a:hover, .nav a.active {
-                background: rgba(0, 0, 0, 0.25);
-                color: white;
-            }
-
-        .fa {
-            width: 16px;
-            text-align: center;
-        }
-
-
-
-        .animate.ng-enter,
-        .animate.ng-leave {
-            width: 100%;
-            position: absolute;
-            -webkit-transition: 300ms cubic-bezier(0.420, 0.000, 0.580, 1.000) all;
-            -moz-transition: 300ms cubic-bezier(0.420, 0.000, 0.580, 1.000) all;
-            -ms-transition: 300ms cubic-bezier(0.420, 0.000, 0.580, 1.000) all;
-            -o-transition: 300ms cubic-bezier(0.420, 0.000, 0.580, 1.000) all;
-            transition: 300ms cubic-bezier(0.420, 0.000, 0.580, 1.000) all;
-        }
-
-        .animate.ng-enter {
-            left: 200px;
-            /*top: 0;*/
-            opacity: 0;
-        }
-
-            .animate.ng-enter.animate.ng-enter-active {
-                left: 0;
-                /*top: 0;*/
-                opacity: 1;
-            }
-
-        .animate.ng-leave {
-            left: 0;
-            /*top: 0;*/
-            opacity: 1;
-        }
-
-            .animate.ng-leave.animate.ng-leave-active {
-                left: -200px;
-                /*top: 0;*/
-                opacity: 0;
-            }
-
-
-        .button {
-            color: white !important;
-            font-weight: bold;
-            background: #ffab00;
-            border-radius: 2px;
-            padding: 10px 0;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            text-decoration: none;
-            text-align: center;
-            display: inline-block;
-            border: 1px solid #777;
-            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.125);
-        }
-
-            .button:hover {
-                background: #ffb31a;
-            }
-
-            .button:active {
-                padding: 11px 0 9px;
-                background: #e69a00;
-            }
-
-            .button.tile {
-                display: block;
-                text-align: left;
-                padding: 10px;
-                background: #666666;
-                border: 1px solid #666;
-                -webkit-transition: all 0.25s;
-                -moz-transition: all 0.25s;
-                -o-transition: all 0.25s;
-                transition: all 0.25s;
-                -webkit-transform: translateZ(100px) perspective(500) rotateY(0deg);
-                -moz-transform: translateZ(100px) perspective(500) rotateY(0deg);
-                -ms-transform: translateZ(100px) perspective(500) rotateY(0deg);
-                -o-transform: translateZ(100px) perspective(500) rotateY(0deg);
-                transform: translateZ(100px) perspective(500) rotateY(0deg);
-                -webkit-transform-origin: left center;
-                -moz-transform-origin: left center;
-                -ms-transform-origin: left center;
-                -o-transform-origin: left center;
-                transform-origin: left center;
-            }
-
-                
-
-                .button.tile:active {
-                    background: #595959;
-                    -webkit-transform: translateZ(100px) perspective(500) rotateY(5deg);
-                    -moz-transform: translateZ(100px) perspective(500) rotateY(5deg);
-                    -ms-transform: translateZ(100px) perspective(500) rotateY(5deg);
-                    -o-transform: translateZ(100px) perspective(500) rotateY(5deg);
-                    transform: translateZ(100px) perspective(500) rotateY(5deg);
-                }
-                .button.tile.active {
-                    background: #595959;
-                    color: white;
-                }
-    </style>
-
+<body ng-app="app" data-resizable="">
+  
     <div id="menu" class="fullheight" ng-controller="MenuCtrl">
         <a ng-href="/"><h1>Worker</h1></a>
         <div class="nav">
-            <a href="#/tasks" ng-class="{active: urlIs('/tasks')}">
+            <a href="/tasks" ng-class="{active: urlIs('/tasks')}">
                 <i class="fa fa-clock-o"></i> Tasks
             </a>
-            <a href="#/projects" ng-class="{active: urlIs('/projects')}">
+            <a href="/projects" ng-class="{active: urlIs('/projects')}">
                 <i class="fa fa-cog"></i> Projects
             </a>
-            <a href="#/report" ng-class="{active: urlIs('/report')}">
+            <a href="/report" ng-class="{active: urlIs('/report')}">
                 <i class="fa fa-file-text"></i> Report
             </a>
-            <a href="#/about" class="bottom" ng-class="{active: urlIs('/about')}">
+            <a href="/about" class="bottom" ng-class="{active: urlIs('/about')}">
                 <i class="fa fa-question"></i> About
             </a>
         </div>
@@ -251,7 +35,7 @@
     </div>
     @Scripts.Render("~/bundles/jquery")
 
-
+    <script src="~/Scripts/toastr.min.js"></script>
     <script src="~/Scripts/angular.js"></script>
     <script src="~/Scripts/AngularUI/ui-router.js"></script>
     <script src="~/Scripts/angular-animate.js"></script>
@@ -260,24 +44,41 @@
     <script>
         (function () {
             var app;
-
-
-
             app = angular.module('app',
                 ['ngRoute', 'ui.router', 'ngAnimate', 'ngResource']);
 
-            app.config(function ($stateProvider, $urlRouterProvider) {
+            app.directive('resizable', function ($window) {
+                var $itemsWrapper = $("#items-wrapper");
+                var $innerItemsWrapper = $("#inner-items-wrapper");
+                return function ($scope) {
+                    $scope.initializeWindowSize = function () {
+                        $scope.windowHeight = $window.innerHeight;
+                        $scope.windowWidth = $window.innerWidth;
+                        //avoid changing width on scrollbar showing
+                        //   if (!$itemsWrapper.length) {
+                        $itemsWrapper = $("#items-wrapper");
+                        $innerItemsWrapper = $("#inner-items-wrapper");
+                        // }
+                        if ($itemsWrapper.length) {
+                            $itemsWrapper.css('height', ($scope.windowHeight - $itemsWrapper.offset().top) + "px");
+                            if ($itemsWrapper.outerHeight() >= $innerItemsWrapper.height() + 10) {
+                                $itemsWrapper.css("padding-right", "20px");
+                            } else { $itemsWrapper.css("padding-right", "5px"); }
 
+                        }
+                    };
+                    angular.element($window).bind("resize", function () {
+                        $scope.initializeWindowSize();
+                    });
+                    $scope.initializeWindowSize();
+                }
+            });
+            app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+                $locationProvider.html5Mode(true);
                 $urlRouterProvider.when("", "/tasks");
-                //  $urlRouterProvider.when("/", "/tasks/list");
-                //   $urlRouterProvider.when("/projects", "/projects");
-                // For any unmatched url, send to /route1
                 $urlRouterProvider.otherwise("/tasks");
-
-
                 $stateProvider
                     .state('tasks', {
-                        //  abstract: true,
                         url: "/tasks",
                         views: {
                             "main": {
@@ -298,39 +99,37 @@
                                         });
                                         return deferred.promise;
                                     }
-
                                 }
-
-
                             }
                         }
                     })
-                    //.state('tasks.list', {
-                    //    url: "/list",
-                    //    views: {
-
-                    //    }
-                    //})
+                    .state('tasks.add', {
+                        url: "/add",
+                        views: {
+                            "viewB": {
+                                templateUrl: "/Templates/Tasks/add.html",
+                                controller: function ($scope, $stateParams) {
+                                }
+                            }
+                        }
+                    })
                     .state('tasks.item', {
                         url: "/:id",
                         views: {
                             "viewB": {
                                 templateUrl: "/Templates/Tasks/item.html",
                                 controller: function ($scope, $stateParams) {
-                                    //        alert('task');
                                     $scope.task = $scope.tasks[$stateParams.id - 1];
                                 }
                             }
                         }
                     })
                     .state('projects', {
-
                         url: "/projects",
                         views: {
                             "main": {
                                 templateUrl: "/Templates/Projects/wrapper.html",
                                 controller: function () {
-                                    //alert('projects');
                                 },
                             }
                         }
@@ -340,12 +139,8 @@
 
                         }
                     });
-
-
-
                 return true;
             });
-
 
             window.MenuCtrl = function ($scope, $location, $route) {
                 window.scope = $scope;
@@ -354,34 +149,29 @@
                 $scope.urlIs = function (u) {
                     return location.hash.indexOf(u) != -1;
                 };
-
-
             };
-            window.ContentCtrl = function ($scope, $location, $route) {
 
+            window.ContentCtrl = function ($scope, $location, $route) {
                 $scope.back = function () {
                     history.length > 1 && history.back();
                 };
                 $scope.urlIs = function (u) {
                     return location.hash.indexOf(u) != -1;
                 };
-
             };
-            app.controller('tasksCtrl', ['$scope', 'delayedData', function ($scope, delayedData) {
-                $scope.tasks = delayedData[0];
-                //    $scope.meta = delayedData[1];
 
+            app.controller('tasksCtrl', ['$scope', 'delayedData', '$timeout', function ($scope, delayedData, $timeout) {
+
+                $scope.tasks = delayedData[0];
+                $timeout(function () { $scope.initializeWindowSize() }, 0);// its magic. dont touch it
             }]);
 
             app.factory('tasksFactory', ['$http', '$resource', function ($http, $resource) {
-
                 return $resource('/api/Task');
-
             }]);
+
             app.factory('taskFactory', ['$http', '$resource', function ($http, $resource) {
-
                 return $resource('/api/Task/:id', { id: '@@id' }, { 'update': { method: 'PUT' } }, { 'query': { method: 'GET', isArray: false } });
-
             }]);
         })();
     </script>
