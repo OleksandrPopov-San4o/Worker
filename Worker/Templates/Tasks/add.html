@@ -1,3 +1,20 @@
-﻿<div class="view viewB">
-    add
+﻿<div class="view viewB" ng-controller="addTaskCtrl">
+    <div class="dropdown" style="display:inline-block;">
+        <div class="button dropdown-toggle">
+            <span ng-bind-html="selected.text"></span> <span class="caret"></span>
+        </div>
+        <ul class="dropdown-menu popover bottom fade">
+            <div class="arrow"></div>
+            <li ng-repeat="choice in items">
+                <div class="item tile" ng-click="selectItem(choice)" ng-class="{active :choice==selected }" ng-bind-html="choice.snippet"></div>
+            </li>
+        </ul>
+    </div>
+    <div ng-model="mytime" ng-change="changed()" style="display:inline-block;">
+        <timepicker hour-step="hstep" minute-step="mstep" show-meridian="false"></timepicker>
+    </div>
+
+    <div class="button tile" style="display:inline-block;">
+        save
+    </div>
 </div>
