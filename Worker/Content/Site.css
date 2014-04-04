@@ -178,6 +178,7 @@ body {
     -ms-transform-origin: left center;
     -o-transform-origin: left center;
     transform-origin: left center;
+    cursor: pointer;
 }
 
     .button:hover {
@@ -197,15 +198,69 @@ body {
     .button.tile {
         display: block;
         text-align: left;
+    }
+
+
+
+    .tile, .button.tile {
+        color: white;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-decoration: none;
         background: #666666;
         border: 1px solid #666;
     }
 
-        .button.tile:active {
+        .tile:active, .button.tile {
             background: #595959;
         }
 
-        .button.tile.active {
+        .tile.active, .button.tile {
             background: #595959;
             color: white;
         }
+
+
+
+.dropdown-menu.popover {
+    margin: 0;
+    padding: 0;
+    border-radius: 2px;
+    border: none;
+    top: 100%;
+  
+    background: #666666;
+}
+
+    .dropdown-menu.popover .arrow {
+        left: 20%;
+    }
+
+        .dropdown-menu.popover .arrow:after {
+            border-bottom-color: #666666;
+        }
+
+
+.dropdown-menu .item.tile {
+    font-size: 12px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+}
+
+.dropdown-menu li:first-of-type .item {
+    border-radius: 2px 2px 0 0;
+}
+
+.dropdown-menu li:last-of-type .item {
+    border-radius: 0 0 2px 2px;
+}
+
+.open > .dropdown-menu {
+    opacity: 1;
+}
+
+
+.button .caret {
+    border-top-color: white;
+}
