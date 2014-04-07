@@ -16,7 +16,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
                             // Set up a promise to return
                             var deferred = $q.defer();
                             // Set up our resource calls
-                            var tasks = tasksFactory.query();
+                            var tasks = tasksFactory.getAll();
                             // Log out each result so we can see which completed first
                             tasks.$promise.then(function (response) { });
                             // Wait until both resources have resolved their promises, then resolve this promise
@@ -44,8 +44,10 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             views: {
                 "viewB": {
                     templateUrl: "/Templates/Tasks/item.html",
-                    controller: function ($scope, $stateParams) {
-                        $scope.task = $scope.tasks[$stateParams.id - 1];
+                    controller: function ($scope, $stateParams, tasksFactory) {
+                        tasksFactory.get({ id: +$stateParams.id }, function (response) {
+                            $scope.task = response;
+                        });
                     }
                 }
             }

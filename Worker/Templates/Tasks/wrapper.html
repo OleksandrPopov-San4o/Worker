@@ -12,7 +12,7 @@
        
         <div id="items-wrapper">
             <div id="inner-items-wrapper">
-                <div ng-repeat="task in tasks">
+                <div ng-repeat="task in tasks" ng-animate="'item-animate'">
                     <a class="button tile" ng-href="/tasks/{{task.Id}}" ng-class="{active: urlIs('/tasks/{{task.Id}}')}">{{ task.Title }}</a>
                 </div>
             </div>
@@ -20,7 +20,7 @@
     </div>
     <div id="sub-content" class="col-sm-12 col-md-8 col-lg-9" style="z-index: 9;">
         <!--<div style="overflow:hidden;">-->
-            <div data-ui-view="viewB" class="animate" style="z-index:3"></div>
+            <div data-ui-view="viewB" class="view-animate" style="z-index:3"></div>
         <!--</div>-->
     </div>
 </div>

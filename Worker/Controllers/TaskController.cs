@@ -18,14 +18,7 @@ namespace Worker.Controllers
     {
         private WorkerEntities db = new WorkerEntities();
       
-        // GET api/Task
-
-        public IHttpActionResult GetTasks()
-        {
-            return Json(db.Task);
-        }
-
-        // GET api/Task/5
+        [System.Web.Http.HttpGet]
         [ResponseType(typeof(Worker.Models.Task))]
         public async Task<IHttpActionResult> GetTask(int id)
         {
@@ -37,6 +30,24 @@ namespace Worker.Controllers
 
             return Json(task);
         }
+        // GET api/Task
+        public IHttpActionResult GetTasks()
+        {
+            return Json(db.Task);
+        }
+
+        //// GET api/Task/5
+        //[ResponseType(typeof(Worker.Models.Task))]
+        //public async Task<IHttpActionResult> GetTask(int id)
+        //{
+        //    Worker.Models.Task task = await db.Task.FindAsync(id);
+        //    if (task == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return Json(task);
+        //}
 
         // PUT api/Tasks/5
         public async Task<IHttpActionResult> PutTask(int id, Worker.Models.Task task)
@@ -71,6 +82,14 @@ namespace Worker.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
+
+        // GET api/Task/GetNewTask
+        [ResponseType(typeof(Worker.Models.Task))]
+        public IHttpActionResult GetNewTask()
+        {
+            return Json(new Worker.Models.Task());
+        }
+
 
         // POST api/Tasks
         [ResponseType(typeof(Worker.Models.Task))]

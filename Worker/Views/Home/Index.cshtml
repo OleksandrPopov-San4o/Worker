@@ -10,7 +10,7 @@
     @Styles.Render("~/Content/font-awesome")
 </head>
 <body ng-app="app" data-resizable="">
-    <div id="menu" class="fullheight" ng-controller="MenuCtrl">
+    <div id="menu" class="fullheight" ng-controller="MenuCtrl"> 
         <a ng-href="/"><h1>Worker</h1></a>
         <div class="nav">
             <a href="/tasks" ng-class="{active: urlIs('/tasks')}">
@@ -28,7 +28,7 @@
         </div>
     </div>
     <div class="clearfix fullheight" id="main-wrapper" ng-controller="ContentCtrl">
-        <div data-ui-view="main" class="animate fullheight"></div>
+        <div data-ui-view="main" class="view-animate fullheight"></div>
     </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/toastr")
