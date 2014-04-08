@@ -33,6 +33,7 @@ namespace Worker.Controllers
         // GET api/Task
         public IHttpActionResult GetTasks()
         {
+            
             return Json(db.Task);
         }
 
@@ -99,11 +100,11 @@ namespace Worker.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            task.Durability = 1;
             db.Task.Add(task);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = task.Id }, task);
+            return Json(task);
         }
 
         // DELETE api/Tasks/5

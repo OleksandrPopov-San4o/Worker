@@ -1,20 +1,40 @@
-﻿<div class="view viewB" ng-controller="addTaskCtrl">
-    <div class="dropdown" style="display:inline-block;">
-        <div class="button dropdown-toggle">
-            <span ng-bind-html="selected.text"></span> <span class="caret"></span>
-        </div>
-        <ul class="dropdown-menu popover bottom fade">
-            <div class="arrow"></div>
-            <li ng-repeat="choice in items">
-                <div class="item tile" ng-click="selectItem(choice)" ng-class="{active :choice==selected }" ng-bind-html="choice.snippet"></div>
-            </li>
-        </ul>
+﻿<div class="view viewB clearfix" ng-controller="addTaskCtrl">
+
+
+    <div style="max-width: 200px; width: 200px; display: inline-block; vertical-align: middle;">
+        <input type="text" class="form-control" ng-model="title" placeholder="Title" style="margin-bottom:10px;" />
+        <input type="text" class="form-control" ng-model="desc" placeholder="Description" />
     </div>
-    <div ng-model="mytime" ng-change="changed()" style="display:inline-block;">
+    <div style="display: inline-block; vertical-align: middle; min-width: 100px; position: relative; z-index: 10000;">
+        <div class="dropdown" style="margin-bottom: 10px;">
+            <div class="button green small dropdown-toggle" style="width: 100%;">
+                {{ddTypeSelected.text}} <span class="caret"></span>
+            </div>
+            <ul class="dropdown-menu popover bottom fade">
+                <div class="arrow green"></div>
+                <li ng-repeat="choice in ddTypeItems">
+                    <div class="item green" ng-click="ddTypeSelectItem(choice)" ng-class="{active :choice==ddTypeSelected }" ng-bind-html="choice.snippet"></div>
+                </li>
+            </ul>
+        </div>
+        <div class="dropdown">
+            <div class="button green small dropdown-toggle" style="width: 100%;">
+                {{ddPrioritySelected.text}}<span class="caret"></span>
+            </div>
+            <ul class="dropdown-menu popover bottom fade">
+                <div class="arrow green"></div>
+                <li ng-repeat="choice in ddPriorityItems">
+                    <div class="item green" ng-click="ddPrioritySelectItem(choice)" ng-class="{active :choice==ddPrioritySelected }" ng-bind-html="choice.snippet"></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div ng-model="mytime" ng-change="changed()" class="time-table" style="">
         <timepicker hour-step="hstep" minute-step="mstep" show-meridian="false"></timepicker>
     </div>
 
-    <div class="button tile" style="display:inline-block;">
-        save
+    <div class="button small tile" style="display:inline-block;" ng-click="save()">
+        save <i class="fa fa-check"></i>
     </div>
 </div>

@@ -11,7 +11,8 @@ app.factory('tasksFactory', ['$http', '$resource', function ($http, $resource) {
     return $resource('/api/task/:action/:id',
                    {  },
                    {
-                       'getNew': { method: "GET", params: { action: "GetNew"}, isArray: false },
+                       'getNew': { method: "GET", params: { action: "GetNewTask" }, isArray: false },
+                       'add': { method: "POST", params: { action: "PostTask" }, isArray: false },
                        'getAll': { method: "GET", params: { action: "GetTasks" }, isArray: true },
                        'get': { method: "GET", params: { action: "GetTask" }, isArray: false },
                        //'delete': { method: 'DELETE' },

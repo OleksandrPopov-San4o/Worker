@@ -73,6 +73,7 @@ body {
 }
 
 #items-wrapper {
+    overflow-x: hidden;
     overflow-y: auto;
     margin-right: -20px;
     padding-right: 5px;
@@ -133,6 +134,7 @@ body {
 }
 
     .view-animate.ng-enter.view-animate.ng-enter-active {
+       
         left: 0;
         /*top: 0;*/
         opacity: 1;
@@ -149,35 +151,28 @@ body {
         /*top: 0;*/
         opacity: 0;
     }
-    
-.item-animate-enter, 
-.item-animate-leave
-{ 
-	-webkit-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-	-moz-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-	-ms-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-	-o-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-	transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-	position: relative;
-	display: block;
-	overflow: hidden;
-	text-overflow: clip;
-	white-space:nowrap;
-} 
 
-.item-animate-leave.item-animate-leave-active,
-.item-animate-enter {
-	opacity: 0;
-	width: 0px;
-	height: 0px;
+
+
+.item-animate.ng-enter,
+.item-animate.ng-leave {
+    position: relative;
 }
 
-.item-animate-enter.item-animate-enter-active, 
-.item-animate-leave {
-	opacity: 1;
-	width: 150px;
-	height: 30px;
+.item-animate.ng-enter {
+    -webkit-animation: 0.5s fadeInRight;
+    -moz-animation: 0.5s fadeInRight;
+    -o-animation: 0.5s fadeInRight;
+    animation: 0.5s fadeInRight;
 }
+
+.item-animate.ng-leave {
+    -webkit-animation: 0.5s fadeOutLeft;
+    -moz-animation: 0.5s fadeOutLeft;
+    -o-animation: 0.5s fadeOutLeft;
+    animation: 0.5s fadeOutLeft;
+}
+
 
 
 .button {
@@ -186,7 +181,6 @@ body {
     background: #ffab00;
     border-radius: 2px;
     padding: 10px;
-    margin-bottom: 10px;
     text-transform: uppercase;
     text-decoration: none;
     text-align: center;
@@ -210,6 +204,11 @@ body {
     cursor: pointer;
 }
 
+    .button.small {
+        padding: 7px 10px;
+        font-size: 12px;
+    }
+
     .button:hover {
         background: #ffb31a;
     }
@@ -229,27 +228,65 @@ body {
         text-align: left;
     }
 
-
-
-    .tile, .button.tile {
-        color: white;
-        font-weight: bold;
-        text-transform: uppercase;
-        text-decoration: none;
-        background: #666666;
-        border: 1px solid #666;
+    .button.green {
+        background-color: #306772;
+        border: 1px solid #004050;
     }
 
-        .tile:active, .button.tile {
-            background: #595959;
+        .button.green:hover {
+            background-color: #004050;
         }
 
-        .tile.active, .button.tile {
-            background: #595959;
-            color: white;
+        .button.green:active {
+            background-color: #003a49;
         }
 
+.form-control {
+    border-radius: 2px;
+}
 
+.tile, .button.tile {
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #666666;
+    border: 1px solid #666;
+}
+
+    .tile:active, .button.tile:active {
+        background: #595959;
+    }
+
+    .tile.active, .button.tile.active {
+        background: #595959;
+        color: white;
+    }
+
+.green, .button.green {
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid #004050;
+}
+
+    .green.item {
+        background: #306772;
+    }
+
+    .green:active, .button.green:active {
+        background: #003a49;
+    }
+
+    .green.active, .button.green.active {
+        background: #003a49;
+        color: white;
+    }
+
+#inner-items-wrapper .button.tile {
+    margin-bottom: 10px;
+}
 
 .dropdown-menu.popover {
     margin: 0;
@@ -257,20 +294,23 @@ body {
     border-radius: 2px;
     border: none;
     top: 100%;
-  
     background: #666666;
+    margin-top: 10px;
 }
 
     .dropdown-menu.popover .arrow {
         left: 20%;
     }
 
-        .dropdown-menu.popover .arrow:after {
+        .dropdown-menu.popover .arrow.tile:after {
             border-bottom-color: #666666;
         }
 
+        .dropdown-menu.popover .arrow.green:after {
+            border-bottom-color: #306772;
+        }
 
-.dropdown-menu .item.tile {
+.dropdown-menu .item {
     font-size: 12px;
     padding: 5px 10px;
     cursor: pointer;
@@ -293,3 +333,13 @@ body {
 .button .caret {
     border-top-color: white;
 }
+
+.time-table {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+    .time-table .btn.btn-link {
+        padding-top: 0;
+        padding-bottom: 0;
+    }

@@ -9,23 +9,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             views: {
                 "main": {
                     templateUrl: "/Templates/Tasks/wrapper.html",
-                    controller: 'tasksCtrl',
-
-                    resolve: {
-                        delayedData: function ($q, tasksFactory) {
-                            // Set up a promise to return
-                            var deferred = $q.defer();
-                            // Set up our resource calls
-                            var tasks = tasksFactory.getAll();
-                            // Log out each result so we can see which completed first
-                            tasks.$promise.then(function (response) { });
-                            // Wait until both resources have resolved their promises, then resolve this promise
-                            $q.all([tasks.$promise]).then(function (response) {
-                                deferred.resolve(response);
-                            });
-                            return deferred.promise;
-                        }
-                    }
+                    controller: 'tasksCtrl'
                 }
             }
         })
@@ -33,9 +17,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             url: "/add",
             views: {
                 "viewB": {
-                    templateUrl: "/Templates/Tasks/add.html",
-                    controller: function ($scope, $stateParams) {
-                    }
+                    templateUrl: "/Templates/Tasks/add.html"
                 }
             }
         })

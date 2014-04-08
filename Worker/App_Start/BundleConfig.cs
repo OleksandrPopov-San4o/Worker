@@ -22,10 +22,11 @@ namespace Worker
                         "~/Scripts/angular-sanitize.min.js",
                         "~/Scripts/App/app.js",
                         "~/Scripts/App/app-config.js",
-                        "~/Scripts/App/Controllers/*.js", 
                         "~/Scripts/App/Services/*.js", 
                         "~/Scripts/App/Directives/*.js",
-                        "~/Scripts/App/Directives/Services/*.js"));
+                        "~/Scripts/App/Directives/Services/*.js",
+                        "~/Scripts/App/Controllers/*.js"
+                       ));
 
             bundles.Add(new ScriptBundle("~/bundles/toastr").Include(
                         "~/Scripts/toastr.js"));
@@ -41,8 +42,7 @@ namespace Worker
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
-
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/animates.css", "~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/font-awesome").Include("~/Content/css/font-awesome.min.css"));
 

@@ -12,8 +12,8 @@
        
         <div id="items-wrapper">
             <div id="inner-items-wrapper">
-                <div ng-repeat="task in tasks" ng-animate="'item-animate'">
-                    <a class="button tile" ng-href="/tasks/{{task.Id}}" ng-class="{active: urlIs('/tasks/{{task.Id}}')}">{{ task.Title }}</a>
+                <div ng-repeat="task in tasks | orderBy:'Id':true" class="item-animate">
+                    <a class="button tile" ng-href="/tasks/{{task.Id}}" ng-class="{active: urlIs('/tasks/{{task.Id}}')}">[{{task.Estimate}}] {{ task.Title }} ({{task.Description}})</a>
                 </div>
             </div>
         </div>
